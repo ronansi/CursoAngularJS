@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Inicio CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <!-- Fim CSS -->
+
+    <!-- Inicio JS -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/Index.controller.js"></script>
+    <!-- Fim JS -->
+</head>
+<body ng-app="pdApp" class="container">
+
+    <div ng-controller="IndexController">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" ng-model="formulario.nome" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control" ng-model="formulario.sobrenome">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <span>Nome: {{formulario.nome}}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
