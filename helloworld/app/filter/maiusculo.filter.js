@@ -6,7 +6,6 @@ function maiusculo(){
             return '';
         }
 
-
         return input.toUpperCase();
     };
 }

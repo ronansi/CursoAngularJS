@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Inicio CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+
+    <!-- Fim CSS -->
+
+    <!-- Inicio JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/service/alert.service.js"></script>
+    <script src="app/filter/maiusculo.filter.js"></script>
+    <script src="app/controller/cadastro-carro.controller.js"></script>
+    <!-- Fim JS -->
+</head>
+<body ng-app="pdApp" class="container">
+
+<div ng-controller="CadastroCarroController">
+
+    <form novalidate name="carroForm" autocomplete="off">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Cadastro de carro
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !carroForm.nome.$pristine && carroForm.nome.$invalid}">
+
+
+                            <md-input-container>
+                                <label for="nome">Nome do carro</label>
+                                <input type="text"
+                                       ng-model="entidade.carro"
+                                       ng-required="true"
+                                       ng-minlength="2"
+                                       ng-maxlength="20"
+                                       name="nome"
+                                       id="nome"
+                                       autofocus />
+                                <div ng-messages="carroForm.nome.$error" ng-if="!carroForm.nome.$pristine" class="text-danger">
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                                </div>
+                            </md-input-container>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !carroForm.cor.$pristine && carroForm.cor.$invalid}">
+
+                            <md-input-container>
+                                <label class="control-label" for="nome">Cor</label>
+                                <input type="text" class="form-control" ng-model="entidade.cor" required name="cor" id="cor">
+                                <div ng-messages="carroForm.cor.$error" ng-if="!carroForm.cor.$pristine" class="text-danger">
+
+                                    <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !carroForm.dataLancamento.$pristine && carroForm.dataLancamento.$invalid}">
+                            <label class="control-label" for="dataLancamento">Data de lançamento</label>
+                            <input type="date" class="form-control" ng-model="entidade.dataLancamento" name="dataLancamento" id="dataLancamento">
+                            <div ng-messages="carroForm.dataLancamento.$error" ng-if="!carroForm.dataLancamento.$pristine" class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div ui-grid="gridOptions"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary navbar-btn" ng-click="salvar()">
+                    <i class="fa fa-floppy-o"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-warning navbar-btn" ng-click="limpar()">
+                    <i class="fa fa-eraser"></i> Limpar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -34,25 +34,25 @@
     <script src="app/config/pd-rotas-config.js"></script>
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
-    <script src="app/views/carro/cadastro-carro.controller.js"></script>
+    <script src="app/controller/cadastro-bairro.controller.js"></script>
 </head>
 <body ng-app="pdApp" class="container">
 
-    <div ng-controller="CadastroCarroController">
+    <div ng-controller="CadastroBairroController">
 
-        <form novalidate name="carroForm" autocomplete="off">
+        <form novalidate name="bairroForm" autocomplete="off">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    Cadastro de carro
+                    Cadastro de bairro
                 </div>
                 <div class="panel-body">
                     <div class="row">
 
                         <div class="col-md-3">
-                            <div class="form-group" ng-class="{'has-error' : !carroForm.nome.$pristine && carroForm.nome.$invalid}">
-                                <label class="control-label" for="nome">Nome do carro</label>
+                            <div class="form-group" ng-class="{'has-error' : !bairroForm.nome.$pristine && bairroForm.nome.$invalid}">
+                                <label class="control-label" for="nome">Nome do bairro</label>
                                 <input type="text"
-                                       ng-model="entidade.carro"
+                                       ng-model="entidade.nome"
                                        class="form-control"
                                        ng-required="true"
                                        ng-minlength="2"
@@ -60,27 +60,43 @@
                                        name="nome"
                                        id="nome"
                                        autofocus />
-                                <div ng-messages="carroForm.nome.$error" ng-if="!carroForm.nome.$pristine" class="text-danger">
+                                <div ng-messages="bairroForm.nome.$error" ng-if="!bairroForm.nome.$pristine" class="text-danger">
                                     <div ng-messages-include="app/template/input-ng-messages.html"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="form-group" ng-class="{'has-error' : !carroForm.cor.$pristine && carroForm.cor.$invalid}">
-                                <label class="control-label" for="nome">Cor</label>
-                                <input type="text" class="form-control" ng-model="entidade.cor" required name="cor" id="cor">
-                                <div ng-messages="carroForm.cor.$error" ng-if="!carroForm.cor.$pristine" class="text-danger">
+                            <div class="form-group" ng-class="{'has-error' : !bairroForm.cidade.$pristine && bairroForm.cidade.$invalid}">
+                                <label class="control-label" for="cidade">Cidade</label>
+                                <input type="text"
+                                       ng-model="entidade.cidade"
+                                       class="form-control"
+                                       ng-required="true"
+                                       ng-minlength="2"
+                                       ng-maxlength="20"
+                                       name="cidade"
+                                       id="cidade"
+                                       autofocus />
+                                <div ng-messages="bairroForm.cidade.$error" ng-if="!bairroForm.cidade.$pristine" class="text-danger">
                                     <div ng-messages-include="app/template/input-ng-messages.html"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="form-group" ng-class="{'has-error' : !carroForm.dataLancamento.$pristine && carroForm.dataLancamento.$invalid}">
-                                <label class="control-label" for="dataLancamento">Data de lançamento</label>
-                                <input type="date" class="form-control" ng-model="entidade.dataLancamento" name="dataLancamento" id="dataLancamento">
-                                <div ng-messages="carroForm.dataLancamento.$error" ng-if="!carroForm.dataLancamento.$pristine" class="text-danger">
+                            <div class="form-group" ng-class="{'has-error' : !bairroForm.estado.$pristine && bairroForm.estado.$invalid}">
+                                <label class="control-label" for="nome">Estado</label>
+                                <input type="text"
+                                       ng-model="entidade.estado"
+                                       class="form-control"
+                                       ng-required="true"
+                                       ng-minlength="2"
+                                       ng-maxlength="20"
+                                       name="estado"
+                                       id="estado"
+                                       autofocus />
+                                <div ng-messages="bairroForm.estado.$error" ng-if="!bairroForm.estado.$pristine" class="text-danger">
                                     <div ng-messages-include="app/template/input-ng-messages.html"></div>
                                 </div>
                             </div>
@@ -89,18 +105,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Nome do carro</th>
-                                    <th>Cor</th>
-                                    <th>Data de lançamento</th>
-                                </tr>
-                                <tr ng-repeat="carro in listaCarros">
-                                    <td ng-bind="carro.carro"></td>
-                                    <td ng-bind="carro.cor | maiusculo"></td>
-                                    <td ng-bind="carro.dataLancamento | date: 'dd/MM/yyyy'"></td>
-                                </tr>
-                            </table>
+
+                            <div ui-grid="gridOptions"></div>
+
                         </div>
                     </div>
                 </div>

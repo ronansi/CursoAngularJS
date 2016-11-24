@@ -1,0 +1,84 @@
+<div ng-controller="CadastroBairroController">
+
+    <form novalidate name="bairroForm" autocomplete="off">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Cadastro de bairro
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !bairroForm.nome.$pristine && bairroForm.nome.$invalid}">
+                            <label class="control-label" for="nome">Nome do bairro</label>
+                            <input type="text"
+                                   ng-model="entidade.nome"
+                                   class="form-control"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="20"
+                                   name="nome"
+                                   id="nome"
+                                   autofocus />
+                            <div ng-messages="bairroForm.nome.$error" ng-if="!bairroForm.nome.$pristine" class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !bairroForm.cidade.$pristine && bairroForm.cidade.$invalid}">
+                            <label class="control-label" for="cidade">Cidade</label>
+                            <input type="text"
+                                   ng-model="entidade.cidade"
+                                   class="form-control"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="20"
+                                   name="cidade"
+                                   id="cidade"
+                                   autofocus />
+                            <div ng-messages="bairroForm.cidade.$error" ng-if="!bairroForm.cidade.$pristine" class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{'has-error' : !bairroForm.estado.$pristine && bairroForm.estado.$invalid}">
+                            <label class="control-label" for="nome">Estado</label>
+                            <input type="text"
+                                   ng-model="entidade.estado"
+                                   class="form-control"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="20"
+                                   name="estado"
+                                   id="estado"
+                                   autofocus />
+                            <div ng-messages="bairroForm.estado.$error" ng-if="!bairroForm.estado.$pristine" class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div ui-grid="gridOptions"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary navbar-btn" ng-click="salvar()">
+                    <i class="fa fa-floppy-o"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-warning navbar-btn" ng-click="limpar()">
+                    <i class="fa fa-eraser"></i> Limpar</button>
+            </div>
+        </div>
+    </form>
+</div>
