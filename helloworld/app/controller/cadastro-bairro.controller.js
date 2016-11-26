@@ -6,6 +6,7 @@ function CadastroBairroController($scope, AlertService, $state, $rootScope){
 
     $scope.entidade = {};
     $scope.listaBairros = [];
+    $scope.edit = false;
     $scope.salvar = salvar;
     $scope.limpar = limpar;
     $scope.excluir = excluir;
@@ -18,9 +19,20 @@ function CadastroBairroController($scope, AlertService, $state, $rootScope){
 
 
         if($scope.bairroForm.$valid){
-            $scope.entidade.id = idSequence;
-            idSequence++;
-            $scope.listaBairros.push(angular.copy($scope.entidade));
+
+            if($scope.edit){
+                for(var i = $scope.listaBairros.length - 1; i >=0; i--){
+                    if($scope.listaBairros[i].id === $scope.entidade.id){
+                        $scope.listaBairros[i] = angular.copy($scope.entidade);
+                    }
+                }
+                $scope.edit = false;
+            }else{
+                $scope.entidade.id = idSequence;
+                idSequence++;
+                $scope.listaBairros.push(angular.copy($scope.entidade));
+            }
+
             limpar();
             $scope.bairroForm.$setPristine();
 
@@ -38,7 +50,7 @@ function CadastroBairroController($scope, AlertService, $state, $rootScope){
     function limpar(){
         $scope.entidade = {};
         $scope.bairroForm.$setPristine();
-
+        $scope.edit = false;
         angular.element('#nome').focus();
     }
 
@@ -66,14 +78,8 @@ function CadastroBairroController($scope, AlertService, $state, $rootScope){
 
     function editar(linha){
 
-
-        for(var i = $scope.listaBairros.length - 1; i >=0; i--){
-            if($scope.listaBairros[i].id === linha.id){
-                $scope.listaBairros.splice(i, 1);
-            }
-        }
-
         $scope.entidade = angular.copy(linha);
+        $scope.edit = true;
     }
 
     function visualizar(linha){

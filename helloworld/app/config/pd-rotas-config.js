@@ -1,6 +1,6 @@
 angular.module("pdApp").config(config);
 
-function config($stateProvider){
+function config($stateProvider, $urlRouterProvider){
 
     var cadastroCarro = {
         name: 'cadastroCarro',
@@ -46,4 +46,6 @@ function config($stateProvider){
         .state('pesquisaCarro', pesquisaCarro)
         .state('visualizarBairro', visualizarBairro)
         .state('cadastroBairro', cadastroBairro);
+
+    $urlRouterProvider.otherwise('/cadastro-bairro');
 }
