@@ -1,14 +1,32 @@
 angular.module('pdApp').controller('IndexController', IndexController);
 
+IndexController.$inject = ['AlertService'];
 
-function IndexController($scope){
-    $scope.nome = "Ronan";
+function IndexController(AlertService){
+    var vm = this;
 
-    $scope.alerta = alerta;
+    vm.entidade = {};
+    vm.salvar = salvar;
+    vm.limpar = limpar;
+    vm.excluir = excluir;
 
-    $scope.formulario = {};
+    vm.provider = [
+        {descricao: "Masculino", valor: "M"},
+        {descricao: "Feminino", valor: "F"}
+    ];
 
-    function alerta(){
-        alert("Olá");
+    function salvar(){
+        AlertService.success("Registro salvo com sucesso")
+    }
+
+    function limpar(){
+        AlertService.success("Registro limpo com sucesso")
+    }
+
+    function excluir(){
+        AlertService.success("Registro excluido com sucesso")
     }
 }
+
+
+

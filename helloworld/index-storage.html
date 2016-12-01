@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Inicio CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="arquitetura/directives/pd-crud/pd-crud.css">
+
+    <!-- Fim CSS -->
+
+    <!-- Inicio JS -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="node_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/service/alert.service.js"></script>
+    <script src="app/filter/maiusculo.filter.js"></script>
+    <script src="app/controller/Index.controller.js"></script>
+    <script src="arquitetura/directives/pd-hello-world/pd-hello-world.directive.js"></script>
+    <script src="arquitetura/directives/pd-input-text/pd-input-text.directive.js"></script>
+    <script src="arquitetura/directives/pd-crud/pd-crud.directive.js"></script>
+    <script src="arquitetura/directives/pd-select/pd-select.directive.js"></script>
+    <script src="app/controller/index-storage.controller.js"></script>
+</head>
+<body ng-app="pdApp" class="container">
+
+<div ng-controller="IndexStorageController as vm" class="pd-crud">
+    {{vm.listaAux}}
+
+    <button class="btn btn-default" ng-click="vm.setarInformacaoNoStorage()">Salvar no storage</button>
+</div>
+
+</body>
+</html>
